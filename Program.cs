@@ -93,8 +93,7 @@ namespace TestLayers
                         materials[0] = _material;
 
                         // Добавляем в выгруженную часть слоя в список выгруженного материала
-                        Material unload = _material;
-                        unload.Weight = weight;
+                        Material unload = new Material(_material.Name, weight);
                         unloaded.Add(unload);
                         weight = 0;
                     }
