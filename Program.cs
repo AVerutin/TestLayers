@@ -88,10 +88,15 @@ namespace TestLayers
                     // то вес списываемого материала устанавливаем в ноль, а вес слоя уменьшаем на вес списываемого материала
                     if (_material.Weight > weight)
                     {
-                        _material.Weight -= weight;
+                        // Находим вес оставшегося материала на слое
+                        _material.Weight = _material.Weight - weight;
                         materials[0] = _material;
+
+                        // Добавляем в выгруженную часть слоя в список выгруженного материала
+                        Material unload = _material;
+                        unload.Weight = weight;
+                        unloaded.Add(unload);
                         weight = 0;
-                        unloaded.Add(_material);
                     }
                     else
                     {
